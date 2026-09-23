@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlikler | Kampüs Etkinlik</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    caption {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    td {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      vertical-align: top;
+    }
+
+    .ayin-programi caption {
+      color: #2c5f8a;
+    }
+
+    .ayin-programi tr:first-child td {
+      background-color: #2c5f8a;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .ayin-programi tr:nth-child(even) td {
+      background-color: #eaf2fa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <table>
+      <caption>Tüm Etkinlikler</caption>
+      <tr>
+        <td>
+          <article>
+            <h2>Kariyer Günleri</h2>
+            Seminer • <time datetime="2026-10-12">12 Ekim</time> • A Blok
+            <a href="etkinlik-detay.html">Detayları Gör</a>
+          </article>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <article>
+            <h2>Robotik Atölyesi</h2>
+            Atölye • <time datetime="2026-10-20">20 Ekim</time> • Lab 2
+            <a href="etkinlik-detay.html">Detayları Gör</a>
+          </article>
+        </td>
+      </tr>
+    </table>
+
+    <table class="ayin-programi">
+      <caption>Ayın Programı</caption>
+      <tr>
+        <td>Tarih</td>
+        <td>Etkinlik</td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-12">12 Ekim 2026</time></td>
+        <td><a href="etkinlik-detay.html">Kariyer Günleri</a></td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-20">20 Ekim 2026</time></td>
+        <td><a href="etkinlik-detay.html">Robotik Atölyesi</a></td>
+      </tr>
+    </table>
+
+    <p>İsmail Harun Şahin · 2211012053 · 2026</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
