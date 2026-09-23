@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Güncelle | Kampüs Etkinlik</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 480px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      font: inherit;
+      padding: 0.5rem;
+    }
+
+    button {
+      align-self: flex-start;
+      padding: 0.5rem 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <form>
+      <label>
+        Etkinlik Adı
+        <input type="text" name="ad" value="Kariyer Günleri 2026" required>
+      </label>
+
+      <label>
+        Kategori
+        <select name="kategori">
+          <option value="seminer" selected>Seminer</option>
+          <option value="atolye">Atölye</option>
+          <option value="fuar">Fuar</option>
+          <option value="sosyal">Sosyal</option>
+        </select>
+      </label>
+
+      <label>
+        Tarih
+        <input type="date" name="tarih" value="2026-10-12" required>
+      </label>
+
+      <label>
+        Saat
+        <input type="time" name="saat" value="10:00" required>
+      </label>
+
+      <label>
+        Yer
+        <input type="text" name="yer" value="Konferans Salonu" required>
+      </label>
+
+      <label>
+        Açıklama
+        <textarea name="aciklama" rows="4">Şirketlerle tanışma fırsatı bulacağınız Kariyer Günleri'nde, staj ve iş fırsatlarını keşfedebilir, sektör temsilcileriyle birebir görüşme imkanı bulabilirsiniz.</textarea>
+      </label>
+
+      <button type="submit">Güncelle</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
