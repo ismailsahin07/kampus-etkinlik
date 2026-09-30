@@ -46,7 +46,7 @@
   </nav>
 
   <main>
-    <form>
+    <form class="etkinlik-form" novalidate>
       <label>
         Etkinlik Adı
         <input type="text" name="ad" value="Kariyer Günleri" required>
@@ -86,6 +86,15 @@
       <button type="submit">Güncelle</button>
     </form>
   </main>
+
+  <script>
+    document.querySelector('.etkinlik-form').addEventListener('submit', function (e) {
+      this.classList.add('was-submitted');
+      if (!this.checkValidity()) {
+        e.preventDefault();
+      }
+    });
+  </script>
 
   <footer>
     <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
