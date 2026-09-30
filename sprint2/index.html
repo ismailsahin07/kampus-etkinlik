@@ -4,19 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kampüs Etkinlik</title>
-  <style>
-    .etkinlik-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .etkinlik-grid section {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="2211012053.css">
 </head>
 <body>
   <header>
@@ -32,31 +20,31 @@
   </nav>
 
   <main>
-    <section>
-      <h1>Yaklaşan Etkinlikler</h1>
+    <section class="yaklasan-etkinlikler">
+      <h2>Yaklaşan Etkinlikler</h2>
 
-      <section class="etkinlik-grid">
-        <section>
-          <h1>Kariyer Günleri</h1>
-          <p>12 Ekim 2026 - Konferans Salonu</p>
+      <div class="etkinlik-grid">
+        <article class="etkinlik-kart">
+          <h3>Kariyer Günleri</h3>
+          <p class="etkinlik-meta">12 Ekim 2026 — Konferans Salonu</p>
           <p>Şirketlerle tanış, staj ve iş fırsatlarını keşfet.</p>
           <a href="etkinlik-detay.html">Detayları Gör</a>
-        </section>
+        </article>
 
-        <section>
-          <h1>Robotik Atölyesi</h1>
-          <p>20 Ekim 2026 - Atölye</p>
+        <article class="etkinlik-kart">
+          <h3>Robotik Atölyesi</h3>
+          <p class="etkinlik-meta">20 Ekim 2026 — Atölye</p>
           <p>Robotik atölyesindeki labaratuar'a katılın.</p>
           <a href="etkinlik-detay.html">Detayları Gör</a>
-        </section>
+        </article>
 
-        <section>
-          <h1>Siber Güvenlik</h1>
-          <p>27 Ekim 2026 - Söyleşi</p>
+        <article class="etkinlik-kart">
+          <h3>Siber Güvenlik</h3>
+          <p class="etkinlik-meta">27 Ekim 2026 — Söyleşi</p>
           <p>Siber güvenlik alanındaki söyleşiye katılın.</p>
           <a href="etkinlik-detay.html">Detayları Gör</a>
-        </section>
-      </section>
+        </article>
+      </div>
     </section>
   </main>
 

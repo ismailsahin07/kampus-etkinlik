@@ -1,0 +1,179 @@
+/* =====================================================
+   Kampüs Etkinlik – Ana Stil Dosyası
+   Öğrenci No: 2211012053
+   ===================================================== */
+
+/* ---------- Tema Değişkenleri ---------- */
+:root {
+  --no: 2211012053;
+  --ton: 153; /* mod(2211012053, 360) = 153 */
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: "Trebuchet MS", serif;
+  --bosluk-m: 1rem;
+  --kose: 8px;
+}
+
+/* ---------- Temel / Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background-color: var(--renk-zemin);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+header {
+  background-color: var(--renk-ana);
+  color: #fff;
+  padding: 1.5rem var(--bosluk-m);
+  text-align: center;
+}
+
+header h1 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  opacity: 0.85;
+}
+
+/* ---------- Nav ---------- */
+nav {
+  background-color: hsl(var(--ton) 65% 25%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.5rem var(--bosluk-m);
+}
+
+nav a {
+  color: #cce4f7;
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--kose);
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--renk-ana);
+  color: #fff;
+}
+
+/* ---------- Main ---------- */
+main {
+  flex: 1;
+  padding: 2rem var(--bosluk-m);
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- Section başlığı ---------- */
+.yaklasan-etkinlikler h2 {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  margin-bottom: 1.25rem;
+  color: var(--renk-ana);
+  border-bottom: 2px solid var(--renk-ana);
+  padding-bottom: 0.4rem;
+}
+
+/* ---------- Etkinlik Grid ---------- */
+.etkinlik-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- Etkinlik Kartı ---------- */
+.etkinlik-kart {
+  background-color: #fff;
+  border-radius: var(--kose);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.etkinlik-kart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.etkinlik-kart h3 {
+  font-size: 1.1rem;
+  color: hsl(var(--ton) 65% 22%);
+}
+
+.etkinlik-kart .etkinlik-meta {
+  font-size: 0.85rem;
+  color: hsl(var(--ton) 30% 55%);
+  font-style: italic;
+}
+
+.etkinlik-kart p:not(.etkinlik-meta) {
+  font-size: 0.95rem;
+  color: #333;
+  flex: 1;
+}
+
+.etkinlik-kart a {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background-color: var(--renk-ana);
+  color: #fff;
+  border-radius: var(--kose);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: background-color 0.2s;
+}
+
+.etkinlik-kart a:hover,
+.etkinlik-kart a:focus {
+  background-color: hsl(var(--ton) 65% 25%);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: hsl(var(--ton) 65% 25%);
+  color: #aac8e4;
+  text-align: center;
+  padding: var(--bosluk-m);
+  font-size: 0.85rem;
+}
+
+/* ---------- Responsive – mobil ---------- */
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+  }
+
+  .etkinlik-grid {
+    grid-template-columns: 1fr;
+  }
+}
