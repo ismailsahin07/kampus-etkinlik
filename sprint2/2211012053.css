@@ -161,6 +161,87 @@ footer {
   font-size: 0.85rem;
 }
 
+/* ---------- Etkinlikler – Tablolar ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+caption {
+  font-family: var(--font);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  color: var(--renk-ana);
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--renk-ana);
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: var(--bosluk-m);
+  vertical-align: top;
+}
+
+/* Tüm Etkinlikler – article içindeki bağlantı */
+table article h2 {
+  font-size: 1rem;
+  color: hsl(var(--ton) 65% 22%);
+  margin-bottom: 0.25rem;
+}
+
+table article a {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  background-color: var(--renk-ana);
+  color: #fff;
+  border-radius: var(--kose);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+table article a:hover,
+table article a:focus {
+  background-color: hsl(var(--ton) 65% 25%);
+}
+
+/* Ayın Programı */
+.ayin-programi caption {
+  color: var(--renk-ana);
+}
+
+.ayin-programi tr:first-child td {
+  background-color: var(--renk-ana);
+  color: #fff;
+  font-weight: bold;
+}
+
+.ayin-programi tr:nth-child(even) td {
+  background-color: hsl(var(--ton) 30% 93%);
+}
+
+.ayin-programi td a {
+  color: var(--renk-ana);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ayin-programi td a:hover {
+  text-decoration: underline;
+}
+
+/* İmza satırı */
+main > p {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
 /* ---------- Responsive – mobil ---------- */
 @media (max-width: 480px) {
   nav {
