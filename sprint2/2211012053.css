@@ -242,6 +242,76 @@ main > p {
   margin-top: 0.5rem;
 }
 
+/* ---------- Etkinlik Detay ---------- */
+.etkinlik-detay {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.etkinlik-detay h1 {
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  color: var(--renk-ana);
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--renk-ana);
+  padding-bottom: 0.4rem;
+}
+
+/* Two-column layout: poster left, dl right */
+.detay-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.detay-poster {
+  margin: 0;
+}
+
+.detay-poster img {
+  width: 100%;
+  border-radius: var(--kose);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
+/* Definition list */
+.detay-bilgi {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.6rem 1rem;
+  align-content: start;
+}
+
+.detay-bilgi dt {
+  font-weight: bold;
+  color: hsl(var(--ton) 65% 22%);
+}
+
+.detay-bilgi dd {
+  margin: 0;
+  color: #333;
+}
+
+/* Back button */
+.btn-geri {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.45rem 1rem;
+  background-color: var(--renk-ana);
+  color: #fff;
+  border-radius: var(--kose);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.btn-geri:hover,
+.btn-geri:focus {
+  background-color: hsl(var(--ton) 65% 25%);
+}
+
 /* ---------- Responsive – mobil ---------- */
 @media (max-width: 480px) {
   nav {
@@ -255,6 +325,10 @@ main > p {
   }
 
   .etkinlik-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detay-layout {
     grid-template-columns: 1fr;
   }
 }
