@@ -389,6 +389,15 @@ main > p {
   background-color: hsl(var(--ton) 65% 25%);
 }
 
+/* Error message injected after invalid fields */
+.hata-mesaji {
+  display: block;
+  color: #c0392b;
+  font-size: 0.8rem;
+  font-weight: normal;
+  margin-top: 0.2rem;
+}
+
 /* ---------- Responsive – mobil ---------- */
 @media (max-width: 480px) {
   nav {

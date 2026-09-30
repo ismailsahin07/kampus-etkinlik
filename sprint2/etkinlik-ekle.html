@@ -63,9 +63,19 @@
 
   <script>
     document.querySelector('.etkinlik-form').addEventListener('submit', function (e) {
+      /* Clear previous error messages */
+      this.querySelectorAll('.hata-mesaji').forEach(function (el) { el.remove(); });
+
       this.classList.add('was-submitted');
+
       if (!this.checkValidity()) {
         e.preventDefault();
+        this.querySelectorAll('input:invalid, select:invalid, textarea:invalid').forEach(function (field) {
+          var msg = document.createElement('span');
+          msg.className = 'hata-mesaji';
+          msg.textContent = 'boş bırakıldı';
+          field.insertAdjacentElement('afterend', msg);
+        });
       }
     });
   </script>
