@@ -312,6 +312,13 @@ main > p {
   background-color: hsl(var(--ton) 65% 25%);
 }
 
+/* Event separator */
+.etkinlik-ayrac {
+  border: none;
+  border-top: 2px solid hsl(var(--ton) 30% 85%);
+  margin: 2.5rem 0;
+}
+
 /* ---------- Responsive – mobil ---------- */
 @media (max-width: 480px) {
   nav {
