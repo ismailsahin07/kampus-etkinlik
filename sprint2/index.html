@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kampüs Etkinlik</title>
+  <style>
+    .etkinlik-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .etkinlik-grid section {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <section>
+      <h1>Yaklaşan Etkinlikler</h1>
+
+      <section class="etkinlik-grid">
+        <section>
+          <h1>Kariyer Günleri</h1>
+          <p>12 Ekim 2026 - Konferans Salonu</p>
+          <p>Şirketlerle tanış, staj ve iş fırsatlarını keşfet.</p>
+          <a href="etkinlik-detay.html">Detayları Gör</a>
+        </section>
+
+        <section>
+          <h1>Robotik Atölyesi</h1>
+          <p>20 Ekim 2026 - Atölye</p>
+          <p>Robotik atölyesindeki labaratuar'a katılın.</p>
+          <a href="etkinlik-detay.html">Detayları Gör</a>
+        </section>
+      </section>
+    </section>
+  </main>
+
+<!-- forcing an update -->
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
