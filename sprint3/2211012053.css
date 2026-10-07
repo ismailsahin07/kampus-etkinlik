@@ -266,6 +266,10 @@ main > p {
   margin-bottom: 1.5rem;
 }
 
+.detay-layout:not(:has(.detay-poster)) {
+  grid-template-columns: 1fr;
+}
+
 .detay-poster {
   margin: 0;
 }
@@ -311,6 +315,27 @@ main > p {
 .btn-geri:hover,
 .btn-geri:focus {
   background-color: hsl(var(--ton) 65% 25%);
+}
+
+/* Error box for not found */
+.hata-kutusu {
+  background-color: #fdf2f2;
+  border: 1.5px solid #e74c3c;
+  color: #c0392b;
+  padding: 1.5rem;
+  border-radius: var(--kose);
+  margin: 1.5rem 0;
+}
+
+.hata-kutusu h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #c0392b;
+}
+
+.hata-kutusu p {
+  color: #555;
+  margin-bottom: 1.25rem;
 }
 
 /* Event separator */
@@ -459,6 +484,14 @@ main > p {
   font-size: 0.95rem;
   color: hsl(var(--ton) 30% 40%);
   min-height: 1.2rem;
+}
+
+.bulunamadi {
+  grid-column: 1 / -1;
+  font-size: 1.05rem;
+  color: hsl(var(--ton) 30% 45%);
+  padding: 1.5rem 0;
+  font-style: italic;
 }
 
 /* ---------- Responsive – mobil ---------- */
