@@ -299,10 +299,17 @@ main > p {
   color: #333;
 }
 
+.detay-aksiyonlar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
 /* Back button */
-.btn-geri {
+.btn-geri,
+.btn-guncelle {
   display: inline-block;
-  margin-top: 0.5rem;
   padding: 0.45rem 1rem;
   background-color: var(--renk-ana);
   color: #fff;
@@ -312,9 +319,15 @@ main > p {
   transition: background-color 0.2s;
 }
 
-.btn-geri:hover,
-.btn-geri:focus {
+.btn-guncelle {
   background-color: hsl(var(--ton) 65% 25%);
+}
+
+.btn-geri:hover,
+.btn-geri:focus,
+.btn-guncelle:hover,
+.btn-guncelle:focus {
+  background-color: hsl(var(--ton) 65% 20%);
 }
 
 /* Error box for not found */

@@ -2,13 +2,52 @@
  * event-form.js — Etkinlik Ekle / Güncelle form yönetimi
  * Student: 2211012053
  *
- * Validates form data, highlights errors in red (aria-invalid="true"),
- * and displays either an error message or a green box with the JSON object.
+ * Supports add and update modes via form data-mode attribute.
+ * If data-mode="guncelle", populates fields from data.js based on ?id in URL.
+ * Preserves ID and displays "güncellendi" upon successful update.
  */
+
+import { events } from "./data.js";
+
+/* ── Date helper (DD-MM-YYYY -> YYYY-MM-DD for date input) ── */
+function toInputDate(ddmmyyyy) {
+  if (!ddmmyyyy) return "";
+  const parts = ddmmyyyy.split("-");
+  if (parts.length === 3 && parts[0].length === 2) {
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+  }
+  return ddmmyyyy;
+}
 
 const form = document.querySelector("#etkinlik-formu");
 
 if (form) {
+  const id = new URLSearchParams(window.location.search).get("id");
+  const etkinlik = events.find((e) => e.id === id);
+
+  // 2, 3, 4, 5. Güncelleme modu kontrolü ve alanları doldurma
+  if (form.dataset.mode === "guncelle") {
+    if (etkinlik) {
+      form.elements.ad.value = etkinlik.title;
+      form.elements.kategori.value = etkinlik.category;
+      form.elements.tarih.value = toInputDate(etkinlik.date);
+      form.elements.saat.value = etkinlik.time;
+      form.elements.yer.value = etkinlik.location;
+      if (form.elements.kapasite) form.elements.kapasite.value = etkinlik.capacity;
+      form.elements.aciklama.value = etkinlik.description;
+    } else {
+      // 5. Etkinlik bulunamadıysa formu gösterme; uyarı + "Etkinliklere git" linki göster
+      form.outerHTML = `
+        <div class="hata-kutusu">
+          <h2>Etkinlik Bulunamadı</h2>
+          <p>Güncellenecek etkinlik bulunamadı veya geçersiz bir ID belirtildi.</p>
+          <a class="btn-geri" href="etkinlikler.html">Etkinliklere git</a>
+        </div>
+      `;
+    }
+  }
+
+  // Submit olayını yakala
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -22,6 +61,11 @@ if (form) {
       capacity: fd.get("kapasite") ? Number(fd.get("kapasite")) : 0,
       description: (fd.get("aciklama") || "").trim()
     };
+
+    // 6. Güncelleme modunda ID korunur
+    if (form.dataset.mode === "guncelle" && id) {
+      data.id = id;
+    }
 
     console.log(data);
 
@@ -111,10 +155,16 @@ if (form) {
       return;
     }
 
-    // 6. Hata yoksa: yeşil kutu + nesne (JSON.stringify)
+    // 6. Hata yoksa: "güncellendi" / "kaydedildi" belirten mesaj + nesne (JSON.stringify)
     if (mesaj) {
       mesaj.className = "basarili";
-      mesaj.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      const basariMetni = form.dataset.mode === "guncelle"
+        ? "Etkinlik başarıyla güncellendi!"
+        : "Etkinlik başarıyla kaydedildi!";
+      mesaj.innerHTML = `
+        <p>${basariMetni}</p>
+        <pre>${JSON.stringify(data, null, 2)}</pre>
+      `;
     }
   });
 }

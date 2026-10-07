@@ -67,7 +67,10 @@ if (!event) {
         </dl>
       </div>
 
-      <a class="btn-geri" href="etkinlikler.html">← Etkinliklere Dön</a>
+      <div class="detay-aksiyonlar">
+        <a class="btn-guncelle" href="etkinlik-guncelle.html?id=${event.id}">Bu etkinliği güncelle</a>
+        <a class="btn-geri" href="etkinlikler.html">← Etkinliklere Dön</a>
+      </div>
     </article>
   `;
 }
