@@ -422,6 +422,15 @@ main > p {
   font-size: 0.8rem;
   font-weight: normal;
   margin-top: 0.2rem;
+  min-height: 1rem;
+}
+
+#form-message {
+  margin-top: 1rem;
+  max-width: 520px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  min-height: 1.2rem;
 }
 
 /* ---------- Filtre Formu ---------- */

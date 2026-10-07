@@ -19,68 +19,63 @@
   </nav>
 
   <main>
-    <form class="etkinlik-form" novalidate>
-      <label>
+    <form id="etkinlik-formu" class="etkinlik-form" novalidate>
+      <label for="ad">
         Etkinlik Adı
-        <input type="text" name="ad" value="Kariyer Günleri" required>
+        <input type="text" id="ad" name="ad" value="Kariyer Günleri" required>
+        <span id="name-error" class="hata-mesaji"></span>
       </label>
 
-      <label>
+      <label for="kategori">
         Kategori
-        <select name="kategori">
-          <option value="seminer" selected>Seminer</option>
-          <option value="atolye">Atölye</option>
-          <option value="fuar">Fuar</option>
-          <option value="sosyal">Sosyal</option>
-          <option value="soylesi">Söyleşi</option>
+        <select id="kategori" name="kategori">
+          <option value="Seminer" selected>Seminer</option>
+          <option value="Atölye">Atölye</option>
+          <option value="Fuar">Fuar</option>
+          <option value="Sosyal">Sosyal</option>
+          <option value="Söyleşi">Söyleşi</option>
         </select>
+        <span id="category-error" class="hata-mesaji"></span>
       </label>
 
-      <label>
+      <label for="tarih">
         Tarih
-        <input type="date" name="tarih" value="2026-10-12" required>
+        <input type="date" id="tarih" name="tarih" value="2026-10-12" required>
+        <span id="date-error" class="hata-mesaji"></span>
       </label>
 
-      <label>
+      <label for="saat">
         Saat
-        <input type="time" name="saat" value="10:00" required>
+        <input type="time" id="saat" name="saat" value="10:00" required>
+        <span id="time-error" class="hata-mesaji"></span>
       </label>
 
-      <label>
+      <label for="yer">
         Yer
-        <input type="text" name="yer" value="Konferans Salonu" required>
+        <input type="text" id="yer" name="yer" value="Konferans Salonu" required>
+        <span id="location-error" class="hata-mesaji"></span>
       </label>
 
-      <label>
+      <label for="kapasite">
+        Kapasite
+        <input type="number" id="kapasite" name="kapasite" value="300" min="1">
+        <span id="capacity-error" class="hata-mesaji"></span>
+      </label>
+
+      <label for="aciklama">
         Açıklama
-        <textarea name="aciklama" rows="4">Şirketlerle tanışma fırsatı bulacağınız Kariyer Günleri'nde, staj ve iş fırsatlarını keşfedebilir, sektör temsilcileriyle birebir görüşme imkanı bulabilirsiniz.</textarea>
+        <textarea id="aciklama" name="aciklama" rows="4">Şirketlerle tanışma fırsatı bulacağınız Kariyer Günleri'nde, staj ve iş fırsatlarını keşfedebilir, sektör temsilcileriyle birebir görüşme imkanı bulabilirsiniz.</textarea>
+        <span id="description-error" class="hata-mesaji"></span>
       </label>
 
-      <button type="submit">Güncelle</button>
+      <button type="submit">Kaydet</button>
     </form>
+    <div id="form-message"></div>
   </main>
-
-  <script>
-    document.querySelector('.etkinlik-form').addEventListener('submit', function (e) {
-      /* Clear previous error messages */
-      this.querySelectorAll('.hata-mesaji').forEach(function (el) { el.remove(); });
-
-      this.classList.add('was-submitted');
-
-      if (!this.checkValidity()) {
-        e.preventDefault();
-        this.querySelectorAll('input:invalid, select:invalid, textarea:invalid').forEach(function (field) {
-          var msg = document.createElement('span');
-          msg.className = 'hata-mesaji';
-          msg.textContent = 'boş bırakıldı';
-          field.insertAdjacentElement('afterend', msg);
-        });
-      }
-    });
-  </script>
 
   <footer>
     <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
   </footer>
+  <script type="module" src="js/event-form.js"></script>
 </body>
 </html>
