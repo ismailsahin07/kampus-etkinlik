@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Ekle | Kampüs Etkinlik</title>
+  <link rel="stylesheet" href="2211012053.css">
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <form class="etkinlik-form" novalidate>
+      <label>
+        Etkinlik Adı
+        <input type="text" name="ad" required>
+      </label>
+
+      <label>
+        Kategori
+        <select name="kategori">
+          <option value="seminer">Seminer</option>
+          <option value="atolye">Atölye</option>
+          <option value="fuar">Fuar</option>
+          <option value="sosyal">Sosyal</option>
+          <option value="soylesi">Söyleşi</option>
+        </select>
+      </label>
+
+      <label>
+        Tarih
+        <input type="date" name="tarih" required>
+      </label>
+
+      <label>
+        Saat
+        <input type="time" name="saat" required>
+      </label>
+
+      <label>
+        Yer
+        <input type="text" name="yer" required>
+      </label>
+
+      <label>
+        Açıklama
+        <textarea name="aciklama" rows="4"></textarea>
+      </label>
+
+      <button type="submit">Gönder</button>
+    </form>
+  </main>
+
+  <script>
+    document.querySelector('.etkinlik-form').addEventListener('submit', function (e) {
+      /* Clear previous error messages */
+      this.querySelectorAll('.hata-mesaji').forEach(function (el) { el.remove(); });
+
+      this.classList.add('was-submitted');
+
+      if (!this.checkValidity()) {
+        e.preventDefault();
+        this.querySelectorAll('input:invalid, select:invalid, textarea:invalid').forEach(function (field) {
+          var msg = document.createElement('span');
+          msg.className = 'hata-mesaji';
+          msg.textContent = 'boş bırakıldı';
+          field.insertAdjacentElement('afterend', msg);
+        });
+      }
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>

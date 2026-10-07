@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kampüs Etkinlik</title>
+  <link rel="stylesheet" href="2211012053.css">
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <h2>Yaklaşan Etkinlikler</h2>
+    <section id="etkinlik-listesi"
+        class="etkinlik-listesi" data-limit="2">
+    </section>
+  </main>
+
+<!-- forcing an update -->
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+  <script type="module" src="js/event-list.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlikler | Kampüs Etkinlik</title>
+  <link rel="stylesheet" href="2211012053.css">
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <form id="filtre-formu" class="filtre">
+      <label for="arama">Etkinlik ara</label>
+      <input type="search" id="arama">
+      <label for="kategori-filtre">Kategori</label>
+      <select id="kategori-filtre">
+        <option value="">Tümü</option>
+      </select>
+    </form>
+    <p id="sonuc"></p>
+
+    <section id="etkinlik-listesi"
+        class="etkinlik-listesi">
+    </section>
+
+    <table class="ayin-programi">
+      <caption>Ayın Programı</caption>
+      <tr>
+        <td>Tarih</td>
+        <td>Etkinlik</td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-12">12 Ekim 2026</time></td>
+        <td><a href="etkinlik-detay.html">Kariyer Günleri</a></td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-20">20 Ekim 2026</time></td>
+        <td><a href="etkinlik-detay.html">Robotik Atölyesi</a></td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-27">27 Ekim 2026</time></td>
+        <td><a href="etkinlik-detay.html">Siber Güvenlik</a></td>
+      </tr>
+    </table>
+
+    <p>İsmail Harun Şahin · 2211012053 · 2026</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+  <script type="module" src="js/event-list.js"></script>
+</body>
+</html>

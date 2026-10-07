@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Güncelle | Kampüs Etkinlik</title>
+  <link rel="stylesheet" href="2211012053.css">
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlik</h1>
+    <p>Kampüsteki etkinlikleri keşfet, takip et ve katıl.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Ana Sayfa</a>
+    <a href="etkinlikler.html">Etkinlikler</a>
+    <a href="etkinlik-ekle.html">Etkinlik Ekle</a>
+  </nav>
+
+  <main>
+    <form class="etkinlik-form" novalidate>
+      <label>
+        Etkinlik Adı
+        <input type="text" name="ad" value="Kariyer Günleri" required>
+      </label>
+
+      <label>
+        Kategori
+        <select name="kategori">
+          <option value="seminer" selected>Seminer</option>
+          <option value="atolye">Atölye</option>
+          <option value="fuar">Fuar</option>
+          <option value="sosyal">Sosyal</option>
+          <option value="soylesi">Söyleşi</option>
+        </select>
+      </label>
+
+      <label>
+        Tarih
+        <input type="date" name="tarih" value="2026-10-12" required>
+      </label>
+
+      <label>
+        Saat
+        <input type="time" name="saat" value="10:00" required>
+      </label>
+
+      <label>
+        Yer
+        <input type="text" name="yer" value="Konferans Salonu" required>
+      </label>
+
+      <label>
+        Açıklama
+        <textarea name="aciklama" rows="4">Şirketlerle tanışma fırsatı bulacağınız Kariyer Günleri'nde, staj ve iş fırsatlarını keşfedebilir, sektör temsilcileriyle birebir görüşme imkanı bulabilirsiniz.</textarea>
+      </label>
+
+      <button type="submit">Güncelle</button>
+    </form>
+  </main>
+
+  <script>
+    document.querySelector('.etkinlik-form').addEventListener('submit', function (e) {
+      /* Clear previous error messages */
+      this.querySelectorAll('.hata-mesaji').forEach(function (el) { el.remove(); });
+
+      this.classList.add('was-submitted');
+
+      if (!this.checkValidity()) {
+        e.preventDefault();
+        this.querySelectorAll('input:invalid, select:invalid, textarea:invalid').forEach(function (field) {
+          var msg = document.createElement('span');
+          msg.className = 'hata-mesaji';
+          msg.textContent = 'boş bırakıldı';
+          field.insertAdjacentElement('afterend', msg);
+        });
+      }
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2026 Kampüs Etkinlik. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
