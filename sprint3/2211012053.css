@@ -425,12 +425,46 @@ main > p {
   min-height: 1rem;
 }
 
+/* aria-invalid red styling */
+.etkinlik-form [aria-invalid="true"] {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important;
+}
+
 #form-message {
   margin-top: 1rem;
   max-width: 520px;
   font-size: 0.95rem;
   font-weight: 500;
   min-height: 1.2rem;
+}
+
+#form-message.basarili {
+  background-color: #eafaf1;
+  border: 1.5px solid #2ecc71;
+  color: #1e8449;
+  padding: 1rem;
+  border-radius: var(--kose);
+}
+
+#form-message.basarili pre {
+  margin: 0.5rem 0 0 0;
+  color: #1a1a2e;
+  background-color: #fff;
+  border: 1px solid #d4efdf;
+  padding: 0.75rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.88rem;
+}
+
+#form-message.hatali {
+  background-color: #fdf2f2;
+  border: 1.5px solid #e74c3c;
+  color: #c0392b;
+  padding: 0.75rem 1rem;
+  border-radius: var(--kose);
 }
 
 /* ---------- Filtre Formu ---------- */
