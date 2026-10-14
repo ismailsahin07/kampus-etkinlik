@@ -1,4 +1,4 @@
-Canlı site: https://BURAYA-VERCEL-ADRESINI-YAZ.vercel.app
+Canlı site: https://kampus-etkinlik-88dp.vercel.app/
 
 # Kampüs Etkinlikleri — Sprint 4 (Vite + TypeScript + React)
 
