@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-label="Kariyer Günleri 2026 afişi">
+  <rect width="600" height="340" fill="#104c31"/>
+  <rect x="24" y="24" width="552" height="292" fill="none" stroke="#f2b544" stroke-width="3"/>
+  <g font-family="Trebuchet MS, Arial, sans-serif" text-anchor="middle">
+    <text x="300" y="140" font-size="42" fill="#ffffff">Kariyer Günleri</text>
+    <text x="300" y="196" font-size="34" fill="#f2b544">2026</text>
+    <text x="300" y="258" font-size="20" fill="#d9efe4">12 Ekim · A Blok Konferans</text>
+  </g>
+</svg>
