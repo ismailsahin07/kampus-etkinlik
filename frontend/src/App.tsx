@@ -4,6 +4,7 @@ import type { Category } from "./types/campus-event";
 import type { PageName } from "./types/page";
 import { events } from "./data/events";
 import { filterByCategory, findEventById, searchEvents } from "./utils/filter-events";
+import { pageFromSearch, pageToSearch } from "./utils/page-url";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
@@ -32,9 +33,12 @@ const pageTexts: Partial<Record<PageName, string>> = {
 const categories = [...new Set(events.map((e) => e.category))];
 const upcoming = [...events].sort((a, b) => a.date.localeCompare(b.date)).slice(0, 2);
 
+// Açık sayfayı adres çubuğundan okur (ilk açılış, yenileme, geri/ileri tuşu).
+const readUrl = () => pageFromSearch(window.location.search, events);
+
 function App() {
-  const [page, setPage] = useState<PageName>("home");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [page, setPage] = useState<PageName>(() => readUrl().page);
+  const [selectedId, setSelectedId] = useState<string | null>(() => readUrl().selectedId);
   const [searchText, setSearchText] = useState("");
   const [category, setCategory] = useState<Category | "">("");
 
@@ -42,9 +46,26 @@ function App() {
   function go(next: PageName, id: string | null = null) {
     setPage(next);
     setSelectedId(id);
+    // Adres çubuğu da değişir; geri tuşu bir önceki sayfaya döner.
+    const event = id ? findEventById(events, id) : undefined;
+    const url = window.location.pathname + pageToSearch(next, event);
+    if (url !== window.location.pathname + window.location.search) {
+      window.history.pushState(null, "", url);
+    }
     window.scrollTo(0, 0);
   }
   const showDetail = (id: string) => go("detail", id);
+
+  // Geri/ileri tuşunda yeni adres okunur, sayfa ona göre değişir.
+  useEffect(() => {
+    function onPopState() {
+      const view = readUrl();
+      setPage(view.page);
+      setSelectedId(view.selectedId);
+    }
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   // Filtreli liste state değil: her çizimde state'ten hesaplanır.
   const filtered = filterByCategory(searchEvents(events, searchText), category);
@@ -53,9 +74,9 @@ function App() {
   let title = pageTitles[page];
   if (page === "detail") title = selected ? selected.title : "Etkinlik Bulunamadı";
 
-  // Başlık değişince sekme adı da değişir.
+  // Başlık değişince sekme adı da değişir; dar sekmede görünsün diye sayfa adı önde.
   useEffect(() => {
-    document.title = title === SITE_NAME ? SITE_NAME : `${SITE_NAME} — ${title}`;
+    document.title = title === SITE_NAME ? SITE_NAME : `${title} — ${SITE_NAME}`;
   }, [title]);
 
   return (
