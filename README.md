@@ -18,6 +18,51 @@ Bu proje, Web Tabanlı Programlama dersi kapsamında geliştirilen çok adımlı
 kampus-etkinlik/
 ├── .gitignore
 ├── README.md
+├── frontend/                 # Sprint 4–6: React + TypeScript + Vite (canlı sürüm)
+│   ├── README.md             # React sürümünün ayrıntılı açıklaması
+│   ├── vercel.json           # SPA yönlendirmesi (/admin gibi adresler yenilenince 404 vermez)
+│   ├── index.html
+│   ├── package.json
+│   ├── public/
+│   │   ├── afis.svg
+│   │   └── favicon.svg
+│   └── src/
+│       ├── main.tsx          # BrowserRouter + AuthProvider + EventsProvider
+│       ├── App.tsx           # 10 route tanımı
+│       ├── App.css           # Ortak stil dosyası
+│       ├── index.css
+│       ├── pages/            # Her route için bir sayfa bileşeni
+│       │   ├── HomePage.tsx            # /                  Yaklaşan 2 etkinlik
+│       │   ├── EventsPage.tsx          # /events            Arama & kategori filtresi
+│       │   ├── EventDetailPage.tsx     # /events/:slug      Etkinlik detayı
+│       │   ├── AdminPage.tsx           # /admin             Yönetim tablosu (Düzenle / Sil)
+│       │   ├── AddEventPage.tsx        # /admin/new         Etkinlik ekleme
+│       │   ├── EditEventPage.tsx       # /admin/edit/:slug  Etkinlik güncelleme
+│       │   ├── LoginPage.tsx           # /login             Giriş
+│       │   ├── RegisterPage.tsx        # /register          Kayıt
+│       │   ├── ForgotPasswordPage.tsx  # /forgot-password   Şifremi unuttum
+│       │   └── NotFoundPage.tsx        # *                  404
+│       ├── components/
+│       │   ├── layout/       # PageLayout, Header, Navigation, Footer
+│       │   ├── events/       # EventCard, EventList, EventFilter, EventDetail
+│       │   └── forms/        # EventForm (doğrulamalı), Field
+│       ├── context/
+│       │   ├── events-context.ts   # EventsContext + useEvents()
+│       │   ├── EventsProvider.tsx  # Ekle / güncelle / sil, localStorage
+│       │   ├── auth-context.ts     # AuthContext + useAuth()
+│       │   └── AuthProvider.tsx    # Kayıt / giriş / çıkış
+│       ├── data/
+│       │   ├── events.ts     # 6 örnek etkinlik
+│       │   └── categories.ts
+│       ├── types/
+│       │   ├── campus-event.ts
+│       │   └── user.ts
+│       └── utils/
+│           ├── filter-events.ts  # Arama ve kategori filtresi
+│           ├── format-date.ts
+│           ├── slugify.ts        # Başlıktan adres üretimi
+│           ├── storage.ts        # localStorage okuma/yazma
+│           └── validation.ts     # Form doğrulama kuralları
 ├── sprint1/                  # Temel HTML5 iskeleti ve semantik sayfalar
 │   ├── index.html
 │   ├── etkinlikler.html
