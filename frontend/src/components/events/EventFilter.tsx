@@ -8,7 +8,7 @@ interface EventFilterProps {
   onCategoryChange: (category: Category | "") => void;
 }
 
-// State App'te kalır (liste de kullanıyor); kutular değeri props'tan okur,
+// State sayfada (adres çubuğunda) kalır; kutular değeri props'tan okur,
 // değişikliği callback ile yukarı bildirir.
 function EventFilter({
   searchText,

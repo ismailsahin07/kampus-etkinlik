@@ -625,3 +625,158 @@ nav a[aria-current="page"] {
 .etkinlik-detay > p {
   margin-bottom: 1rem;
 }
+
+/* =====================================================
+   Sprint 6 eklemeleri (Router, Context, CRUD, formlar)
+   ===================================================== */
+
+/* Giriş yapılınca menüdeki "Çıkış" butonu link gibi görünür */
+nav button {
+  font: inherit;
+  font-size: 0.95rem;
+  color: #cce4f7;
+  background: none;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--kose);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+nav button:hover,
+nav button:focus {
+  background-color: var(--renk-ana);
+  color: #fff;
+}
+
+/* Form altı: Kaydet + Vazgeç yan yana; giriş/kayıt altındaki linkler */
+.form-aksiyonlar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-linkler {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.form-linkler a {
+  color: var(--renk-ana);
+  font-weight: 600;
+}
+
+.etkinlik-form #form-message {
+  margin-top: 0;
+}
+
+/* Yönetim tablosu */
+.yeni-etkinlik {
+  margin-bottom: 1.25rem;
+}
+
+#form-message + .yonetim-tablosu,
+#form-message + .bulunamadi {
+  margin-top: 1rem;
+}
+
+.yonetim-tablosu {
+  background-color: #fff;
+  border-radius: var(--kose);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.yonetim-tablosu th {
+  background-color: var(--renk-ana);
+  color: #fff;
+  text-align: left;
+  padding: 0.75rem var(--bosluk-m);
+}
+
+.yonetim-tablosu td {
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0.75rem var(--bosluk-m);
+  vertical-align: middle;
+}
+
+.yonetim-tablosu td a:not(.btn-guncelle) {
+  color: hsl(var(--ton) 65% 22%);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.yonetim-tablosu td a:not(.btn-guncelle):hover {
+  text-decoration: underline;
+}
+
+.tablo-aksiyonlar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-sil {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.45rem 1rem;
+  background-color: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: var(--kose);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-sil:hover,
+.btn-sil:focus {
+  background-color: #962d22;
+}
+
+/* Mobil: tablo satırları kart gibi alt alta dizilir */
+@media (max-width: 600px) {
+  .yonetim-tablosu thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .yonetim-tablosu,
+  .yonetim-tablosu tbody,
+  .yonetim-tablosu tr,
+  .yonetim-tablosu td {
+    display: block;
+    width: 100%;
+  }
+
+  .yonetim-tablosu tr {
+    border-bottom: 2px solid hsl(var(--ton) 30% 85%);
+    padding: 0.5rem 0;
+  }
+
+  .yonetim-tablosu td {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.5rem;
+    border: none;
+    padding: 0.35rem var(--bosluk-m);
+  }
+
+  .yonetim-tablosu td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: hsl(var(--ton) 65% 22%);
+  }
+}
+
+@media (max-width: 480px) {
+  nav button {
+    width: 100%;
+  }
+}

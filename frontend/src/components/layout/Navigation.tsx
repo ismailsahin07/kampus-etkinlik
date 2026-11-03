@@ -1,33 +1,38 @@
-import type { PageName } from "../../types/page";
+import { NavLink, useNavigate } from "react-router";
+import { useAuth } from "../../context/auth-context";
 
-const menu: { page: PageName; label: string }[] = [
-  { page: "home", label: "Ana Sayfa" },
-  { page: "events", label: "Etkinlikler" },
-  { page: "add", label: "Etkinlik Ekle" },
+const menu = [
+  { to: "/", label: "Ana Sayfa" },
+  { to: "/events", label: "Etkinlikler" },
+  { to: "/admin", label: "Yönetim" },
 ];
 
-interface NavigationProps {
-  current: PageName;
-  onNavigate: (page: PageName) => void;
-}
+// NavLink açık sayfanın linkine aria-current="page" ekler (CSS bunu boyar).
+// "/" için end: yoksa her adreste Ana Sayfa da aktif görünürdü.
+function Navigation() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
-// Veri aşağı (current), olay yukarı (onNavigate): sayfayı değiştiren yine App.
-function Navigation({ current, onNavigate }: NavigationProps) {
   return (
     <nav>
       {menu.map((item) => (
-        <a
-          key={item.page}
-          href="#"
-          aria-current={current === item.page ? "page" : undefined}
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigate(item.page);
+        <NavLink key={item.to} to={item.to} end={item.to === "/"}>
+          {item.label}
+        </NavLink>
+      ))}
+      {user ? (
+        <button
+          type="button"
+          onClick={() => {
+            logout();
+            navigate("/");
           }}
         >
-          {item.label}
-        </a>
-      ))}
+          Çıkış ({user.name.split(" ")[0]})
+        </button>
+      ) : (
+        <NavLink to="/login">Giriş</NavLink>
+      )}
     </nav>
   );
 }

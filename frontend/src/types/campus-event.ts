@@ -14,3 +14,6 @@ export interface CampusEvent {
   description: string;
   image?: string; // afiş isteğe bağlı
 }
+
+// Formdan gelen veri: id'yi Context verir.
+export type CampusEventInput = Omit<CampusEvent, "id">;

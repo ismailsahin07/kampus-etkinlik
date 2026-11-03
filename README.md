@@ -6,6 +6,10 @@ Bu proje, Web Tabanlı Programlama dersi kapsamında geliştirilen çok adımlı
 - **Öğrenci No:** 2211012053
 - **Öğrenci Adı:** İsmail Harun Şahin
 
+**Canlı site (React sürümü):** https://ismailharunsahin-frontend.vercel.app/
+
+> Sprint 4 ve sonrası `frontend/` klasöründe (React + TypeScript + Vite). Güncel ayrıntılar: [frontend/README.md](frontend/README.md) — 10 route, Context API, ekle/güncelle/sil, form doğrulama.
+
 ---
 
 ## 📁 Proje Yapısı

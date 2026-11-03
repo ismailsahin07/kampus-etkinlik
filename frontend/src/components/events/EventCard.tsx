@@ -1,13 +1,14 @@
+import { Link } from "react-router";
 import type { CampusEvent } from "../../types/campus-event";
 import { formatDate } from "../../utils/format-date";
+import { slugify } from "../../utils/slugify";
 
 interface EventCardProps {
   event: CampusEvent;
-  onShowDetail: (id: string) => void;
 }
 
 // key burada değil: key'i listeyi çizen EventList verir.
-function EventCard({ event, onShowDetail }: EventCardProps) {
+function EventCard({ event }: EventCardProps) {
   return (
     <article className="etkinlik-kart">
       <h3>{event.title}</h3>
@@ -18,15 +19,7 @@ function EventCard({ event, onShowDetail }: EventCardProps) {
         {event.category} &middot; Kontenjan: {event.capacity} kişi
       </p>
       <p>{event.description}</p>
-      <a
-        href="#"
-        onClick={(e) => {
-          e.preventDefault();
-          onShowDetail(event.id);
-        }}
-      >
-        Detayları Gör →
-      </a>
+      <Link to={`/events/${slugify(event.title)}`}>Detayları Gör →</Link>
     </article>
   );
 }

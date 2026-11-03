@@ -1,14 +1,14 @@
+import { Link } from "react-router";
 import type { CampusEvent } from "../../types/campus-event";
 import { formatDate } from "../../utils/format-date";
+import { slugify } from "../../utils/slugify";
 
 interface EventDetailProps {
   event: CampusEvent;
-  onBack: () => void;
-  onEdit: (id: string) => void;
 }
 
-// Etkinliği bulmak App'in işi; bileşen hazır etkinliği alır ve gösterir.
-function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
+// Etkinliği bulmak sayfanın işi; bileşen hazır etkinliği alır ve gösterir.
+function EventDetail({ event }: EventDetailProps) {
   return (
     <article className="etkinlik-detay">
       <div className="detay-layout">
@@ -41,26 +41,12 @@ function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
       <p>{event.description}</p>
 
       <div className="detay-aksiyonlar">
-        <a
-          className="btn-geri"
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            onBack();
-          }}
-        >
+        <Link className="btn-geri" to="/events">
           ← Listeye dön
-        </a>
-        <a
-          className="btn-guncelle"
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            onEdit(event.id);
-          }}
-        >
+        </Link>
+        <Link className="btn-guncelle" to={`/admin/edit/${slugify(event.title)}`}>
           Bu etkinliği güncelle
-        </a>
+        </Link>
       </div>
     </article>
   );
