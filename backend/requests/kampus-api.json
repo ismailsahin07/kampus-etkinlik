@@ -1,0 +1,84 @@
+{
+  "info": {
+    "name": "Kampüs Etkinlik API",
+    "description": "Kampüs Etkinlik Yönetim Sistemi – 6 örnek istek koleksiyonu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Sağlık Kontrolü (GET /health)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health",
+        "description": "Sunucunun çalışıp çalışmadığını kontrol eder. Öğrenci numarasını döndürür."
+      }
+    },
+    {
+      "name": "2 - Tüm Etkinlikler (GET /events)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/events",
+        "description": "Veri kaynağındaki tüm etkinlikleri listeler."
+      }
+    },
+    {
+      "name": "3 - Tekil Etkinlik (GET /events/:id)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/events/event-1",
+        "description": "event-1 id'li etkinliği döndürür."
+      }
+    },
+    {
+      "name": "4 - Olmayan Etkinlik 404 (GET /events/:id)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/events/olmayan-id",
+        "description": "Geçersiz id ile istek gönderilir; 404 ve hata mesajı döner."
+      }
+    },
+    {
+      "name": "5 - Yeni Etkinlik Oluştur (POST /events)",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/events",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Girişimcilik Zirvesi\",\n  \"category\": \"Seminer\",\n  \"date\": \"2026-12-05\",\n  \"time\": \"11:00\",\n  \"location\": \"C Blok Amfisi\",\n  \"description\": \"Genç girişimciler ve yatırımcıları bir araya getiren yıllık zirve.\",\n  \"capacity\": 150\n}"
+        },
+        "description": "Tüm zorunlu alanlar gönderilir; 201 ve yeni etkinlik nesnesi döner."
+      }
+    },
+    {
+      "name": "6 - Eksik Veri ile POST 400 (POST /events)",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/events",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Eksik Veri Testi\"\n}"
+        },
+        "description": "Zorunlu alanlar eksik gönderilir; 400 ve hata mesajı döner."
+      }
+    }
+  ]
+}
