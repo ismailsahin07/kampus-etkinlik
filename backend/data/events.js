@@ -1,4 +1,4 @@
-// Kampüs etkinlik verileri - 6 etkinlik
+// data/events.js - 6 kampüs etkinliği (in-memory veri kaynağı)
 const events = [
   {
     id: "event-1",
