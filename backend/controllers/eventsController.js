@@ -1,3 +1,4 @@
+// POST /events: eksik alan varsa 400, başarılıysa 201 döndürür
 const events = require("../data/events");
 
 // GET /events - tüm etkinlikleri döndür
