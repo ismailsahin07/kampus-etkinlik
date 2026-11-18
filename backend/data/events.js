@@ -1,4 +1,4 @@
-// data/events.js - 6 kampüs etkinliği (in-memory veri kaynağı)
+// data/events.js - 6 kampüs etkinliği (npm run seed bunları MongoDB'ye yükler)
 const events = [
   {
     id: "event-1",
