@@ -1,13 +1,18 @@
 {
   "info": {
     "name": "Kampüs Etkinlik API",
-    "description": "Kampüs Etkinlik Yönetim Sistemi – 6 örnek istek koleksiyonu",
+    "description": "Kampüs Etkinlik Yönetim Sistemi – örnek istek koleksiyonu (MongoDB). Önce 'npm run seed', sonra istekleri sırayla çalıştırın: 2. istek ilk etkinliğin id'sini {{event_id}} değişkenine kaydeder.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     {
       "key": "base_url",
       "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "event_id",
+      "value": "",
       "type": "string"
     }
   ],
@@ -22,30 +27,50 @@
     },
     {
       "name": "2 - Tüm Etkinlikler (GET /events)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const list = pm.response.json();",
+              "if (list.length > 0) pm.collectionVariables.set(\"event_id\", list[0].id);"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "url": "{{base_url}}/events",
-        "description": "Veri kaynağındaki tüm etkinlikleri listeler."
+        "description": "MongoDB'deki tüm etkinlikleri tarihe göre sıralı listeler. İlk etkinliğin id'si {{event_id}} değişkenine yazılır."
       }
     },
     {
       "name": "3 - Tekil Etkinlik (GET /events/:id)",
       "request": {
         "method": "GET",
-        "url": "{{base_url}}/events/event-1",
-        "description": "event-1 id'li etkinliği döndürür."
+        "url": "{{base_url}}/events/{{event_id}}",
+        "description": "2. istekte kaydedilen id ile tek etkinliği döndürür (200)."
       }
     },
     {
       "name": "4 - Olmayan Etkinlik 404 (GET /events/:id)",
       "request": {
         "method": "GET",
-        "url": "{{base_url}}/events/olmayan-id",
-        "description": "Geçersiz id ile istek gönderilir; 404 ve hata mesajı döner."
+        "url": "{{base_url}}/events/000000000000000000000000",
+        "description": "Biçimi doğru ama veritabanında olmayan id; 404 ve hata mesajı döner."
       }
     },
     {
-      "name": "5 - Yeni Etkinlik Oluştur (POST /events)",
+      "name": "5 - Geçersiz id 404 (GET /events/:id)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/events/olmayan-id",
+        "description": "ObjectId biçiminde olmayan id; sunucu çökmez, 404 ve hata mesajı döner."
+      }
+    },
+    {
+      "name": "6 - Yeni Etkinlik Oluştur (POST /events)",
       "request": {
         "method": "POST",
         "url": "{{base_url}}/events",
@@ -59,11 +84,11 @@
           "mode": "raw",
           "raw": "{\n  \"title\": \"Girişimcilik Zirvesi\",\n  \"category\": \"Seminer\",\n  \"date\": \"2026-12-05\",\n  \"time\": \"11:00\",\n  \"location\": \"C Blok Amfisi\",\n  \"description\": \"Genç girişimciler ve yatırımcıları bir araya getiren yıllık zirve.\",\n  \"capacity\": 150\n}"
         },
-        "description": "Tüm zorunlu alanlar gönderilir; 201 ve yeni etkinlik nesnesi döner."
+        "description": "Tüm zorunlu alanlar gönderilir; 201 ve MongoDB'ye kaydedilen etkinlik (id, createdAt, updatedAt ile) döner."
       }
     },
     {
-      "name": "6 - Eksik Veri ile POST 400 (POST /events)",
+      "name": "7 - Eksik Veri ile POST 400 (POST /events)",
       "request": {
         "method": "POST",
         "url": "{{base_url}}/events",
@@ -77,7 +102,7 @@
           "mode": "raw",
           "raw": "{\n  \"title\": \"Eksik Veri Testi\"\n}"
         },
-        "description": "Zorunlu alanlar eksik gönderilir; 400 ve hata mesajı döner."
+        "description": "Zorunlu alanlar eksik gönderilir; 400 ve her eksik alan için hata mesajı döner. Sunucu çalışmaya devam eder."
       }
     }
   ]
