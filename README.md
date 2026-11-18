@@ -18,6 +18,18 @@ Bu proje, Web Tabanlı Programlama dersi kapsamında geliştirilen çok adımlı
 kampus-etkinlik/
 ├── .gitignore
 ├── README.md
+├── backend/                  # Sprint 7–8: Express REST API + MongoDB (Mongoose)
+│   ├── README.md             # Kurulum, şema ve REST sözleşmesi
+│   ├── server.js             # Önce MongoDB'ye bağlanır, sonra dinler
+│   ├── package.json          # npm run dev / start / seed
+│   ├── .env.example          # PORT, MONGODB_URI, MONGODB_DB
+│   ├── config/db.js          # MongoDB bağlantı modülü
+│   ├── models/Event.js       # Etkinlik şeması (required, trim, enum, timestamps)
+│   ├── controllers/          # eventsController.js, healthController.js
+│   ├── routes/               # events.js, health.js
+│   ├── data/events.js        # Seed verisi (6 etkinlik)
+│   ├── scripts/seed.js       # npm run seed: 6 kaydı yükler
+│   └── requests/kampus-api.json  # REST istek koleksiyonu
 ├── frontend/                 # Sprint 4–6: React + TypeScript + Vite (canlı sürüm)
 │   ├── README.md             # React sürümünün ayrıntılı açıklaması
 │   ├── vercel.json           # SPA yönlendirmesi (/admin gibi adresler yenilenince 404 vermez)
