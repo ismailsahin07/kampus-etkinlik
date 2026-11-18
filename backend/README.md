@@ -161,6 +161,21 @@ Sadece şemadaki alanlar alınır; gövdede `_id`, `createdAt` gibi alanlar gön
 { "error": "Gövde geçerli bir JSON değil" }
 ```
 
+## İstek kaydı (log)
+
+`middleware/requestLogger.js` her isteği sunucu terminaline yazar: saat, method, adres, durum kodu, süre ve gönderilen JSON gövdesi.
+
+```
+[09:46:48] GET /events 200 243ms
+[09:46:48] GET /events/olmayan-id 404 1ms
+[09:46:48] POST /events 400 37ms {"title":"Eksik Veri Testi"}
+[09:46:48] POST /events 400 5ms {"title":"Şifre testi","password":"***"}
+```
+
+- Adında `pass`, `şifre`, `sifre`, `token` veya `secret` geçen alanlar `***` olarak gizlenir.
+- 500 karakterden uzun gövdeler kısaltılır.
+- Bozuk JSON gönderilirse gövde okunamadığı için sadece satır yazılır (`POST /events 400`).
+
 ## İstek koleksiyonu
 
 `requests/kampus-api.json` (Postman / Thunder Client) 7 istek içerir: health, liste, tekil, olmayan id (404), geçersiz id (404), POST 201, eksik veri POST 400. Liste isteği ilk etkinliğin id'sini `{{event_id}}` değişkenine kaydeder; tekil istek bunu kullanır.
@@ -176,6 +191,8 @@ backend/
 │   └── healthController.js   # /health iş mantığı
 ├── data/
 │   └── events.js             # Seed verisi (6 etkinlik)
+├── middleware/
+│   └── requestLogger.js      # Her isteği terminale yazar (şifreler gizli)
 ├── models/
 │   └── Event.js              # Etkinlik şeması (required, trim, enum, min/max, timestamps)
 ├── routes/

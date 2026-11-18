@@ -2,12 +2,14 @@ require("dotenv").config();
 const express = require("express");
 
 const connectDB = require("./config/db");
+const requestLogger = require("./middleware/requestLogger");
 const healthRouter = require("./routes/health");
 const eventsRouter = require("./routes/events");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(requestLogger);
 app.use(express.json());
 
 app.use("/health", healthRouter);
